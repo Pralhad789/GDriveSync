@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:padding="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/edit_id"
+        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content"
+        android:hint="ID"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/edit_name"
+        android:layout_height="wrap_content"
+        android:hint="Name"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/edit_price"
+        android:layout_height="wrap_content"
+        android:hint="Price"/>
+
+    <EditText
+        android:id="@+id/edit_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Select Date"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/edit_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Value"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btn_add_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Data" />
+
+    <Button
+        android:id="@+id/btn_display"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Display Data" />
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Data" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Data" />
+
+    <Button
+        android:id="@+id/save_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Export Data" />
+
+    <Button
+        android:id="@+id/open_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Import Data" />
+
+</LinearLayout>
