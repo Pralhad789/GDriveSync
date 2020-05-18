@@ -1,29 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="100">
-
-    <TextView
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_weight="50"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_height="82dp">
+    <View
+        android:layout_width="2dp"
         android:layout_height="match_parent"
-        android:id="@+id/ID"/>
-    <TextView
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_weight="50"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/Name"/>
-<!--    <TextView-->
-<!--        android:textStyle="bold"-->
-<!--        android:textSize="20sp"-->
-<!--        android:layout_weight="33"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:id="@+id/textFavFood"/>-->
+        android:layout_marginLeft="75dp"
+        android:background="#ddd"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="75dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IDNumber"
+            android:textColor="#ddd"
+            android:id="@+id/ID"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#eee"
+            android:text="Name"
+            android:textSize="20sp"
+            android:id="@+id/Name"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:id="@+id/Date"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"/>
 
+        </LinearLayout>
+    </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
