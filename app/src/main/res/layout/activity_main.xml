@@ -10,7 +10,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
-        android:layout_height="450dp"
+        android:layout_height="470dp"
         android:layout_marginTop="50dp"
         android:layout_gravity="center"
         app:cardCornerRadius="10dp"
@@ -22,7 +22,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fill in the details:"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                />
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
