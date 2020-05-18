@@ -284,13 +284,14 @@ public class MainActivity extends AppCompatActivity {
 
             mDriveServiceHelper.openFileUsingStorageAccessFramework(getContentResolver(), uri)
                     .addOnSuccessListener(nameAndContent -> {
-                        String[] content = nameAndContent.second.split("\n");
+                        String[] content = nameAndContent.second.split(";");
 //
                         myDB = new DatabaseHelper(MainActivity.this);
-                        for (int i = 0; i < content.length; i++) {
+                        for (int i = 1; i < content.length; i++) {
                             String[] data = content[i].split(",");
                             //Log.i(TAG, "DATA FROM GOOGLE DRIVE: " + content.clone());
                             myDB.insertData(Integer.parseInt(data[0]), data[1]);              //, Integer.parseInt(data[2]), data[3], Integer.parseInt(data[4]));
+                            //myDB.insertDat;
                         }
                     })
                     .addOnFailureListener(exception ->
@@ -344,11 +345,13 @@ public class MainActivity extends AppCompatActivity {
 
             String fileName = "myData1";
             Cursor cursor = myDB.getListContents();
-            String fileContent = "";
+            String fileContent = ";";
+            //StringBuilder fc = new StringBuilder();
             while(cursor.moveToNext()){
-                fileContent += cursor.getString(0)+","+cursor.getString(1)+"\n";  //+","+cursor.getString(2)+","+cursor.getString(3)+","+cursor.getString(4)+"\n";
+                fileContent += cursor.getString(0)+","+cursor.getString(1)+";\n";  //+","+cursor.getString(2)+","+cursor.getString(3)+","+cursor.getString(4)+"\n";
+                //fc.append(cursor.getString(0)).append(cursor.getString(1));
             }
-
+            //String fileContent = fc.toString();
             cursor.close();
 
 
