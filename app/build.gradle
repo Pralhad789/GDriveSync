@@ -52,7 +52,7 @@ dependencies {
     implementation 'jexcelapi:jxl:2.6'
     implementation 'com.madgag:sc-light-jdk15on:1.47.0.3'
     implementation 'com.itextpdf:itextpdf:5.5.7'
-    api 'com.google.android.material:material:1.1.0-alpha06'
+    api 'com.google.android.material:material:1.2.0-alpha06'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'com.google.code.gson:gson:2.8.5'
