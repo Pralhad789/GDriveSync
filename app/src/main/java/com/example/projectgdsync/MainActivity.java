@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper myDB;
     private DriveServiceHelper mDriveServiceHelper;
     private String mOpenFileId;
-    private EditText editid, editprice, editname, editdate, editValue;
+    private EditText editid, editprice, editname, editdate, editValue,editqty,editproduct;
     private Button btnupdate, btnadddata, btndisplay, btn_delete,btnexport,btnopen;
 
     @Override
@@ -52,7 +52,15 @@ public class MainActivity extends AppCompatActivity {
         myDB = new DatabaseHelper(this);
         editid = findViewById(R.id.edit_id);
         editname = findViewById(R.id.edit_name);
+        editprice = findViewById(R.id.edit_price);
+        editqty = findViewById(R.id.edit_quantity);
+        editproduct = findViewById(R.id.edit_product);
 //        editdate = findViewById(R.id.edit_date);
+        //SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        //String currentDateandTime = sdf.format(new Date());
+
+
+
 //        editprice = findViewById(R.id.edit_price);
 //        editValue = findViewById(R.id.edit_value);
         // Store the EditText boxes to be updated when files are opened/created/modified.

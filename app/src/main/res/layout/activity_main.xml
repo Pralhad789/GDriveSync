@@ -69,10 +69,10 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
-                    android:hint="Price">
+                    android:hint="Qty">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edit_price"
+                        android:id="@+id/edit_quantity"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
@@ -83,13 +83,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
-                    android:hint="Date">
+                    android:hint="Product">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edit_date"
+                        android:id="@+id/edit_product"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="date"
+                        android:inputType="text"
                         android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,13 +99,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:hint="Value">
+                android:hint="Price">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_value"
+                    android:id="@+id/edit_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
