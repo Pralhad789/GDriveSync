@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         editprice = findViewById(R.id.edit_price);
         editqty = findViewById(R.id.edit_quantity);
         editproduct = findViewById(R.id.edit_product);
+        editdate = findViewById(R.id.edit_date);
 //        editdate = findViewById(R.id.edit_date);
         //SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         //String currentDateandTime = sdf.format(new Date());
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         btnupdate = findViewById(R.id.btn_update);
         btnupdate.setOnClickListener(v -> {
 
-            boolean isupdate = myDB.updateData(Integer.parseInt(editid.getText().toString()), editname.getText().toString());
+            boolean isupdate = myDB.updateData(Integer.parseInt(editid.getText().toString()), editname.getText().toString(),editproduct.getText().toString(),editqty.getText().toString(),editprice.getText().toString(),editdate.getText().toString());
 
             if (isupdate == true) {
                 Toast.makeText(MainActivity.this, "Data updated", Toast.LENGTH_LONG).show();
@@ -103,7 +104,12 @@ public class MainActivity extends AppCompatActivity {
 
         btnadddata.setOnClickListener(v -> {
 
-            boolean isInserted = myDB.insertData(Integer.parseInt(editid.getText().toString()), editname.getText().toString());    //, Integer.parseInt(editprice.getText().toString()), editdate.getText().toString(), Integer.parseInt(editValue.getText().toString()));
+            boolean isInserted = myDB.insertData(Integer.parseInt(editid.getText().toString()),
+                    editname.getText().toString(),
+                    editproduct.getText().toString(),
+                    editqty.getText().toString(),
+                    editprice.getText().toString(),
+                    editdate.getText().toString());    //, Integer.parseInt(editprice.getText().toString()), editdate.getText().toString(), Integer.parseInt(editValue.getText().toString()));
 
             if (isInserted == true) {
                 Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
@@ -298,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
                         for (int i = 1; i < content.length; i++) {
                             String[] data = content[i].split(",");
                             //Log.i(TAG, "DATA FROM GOOGLE DRIVE: " + content.clone());
-                            myDB.insertData(Integer.parseInt(data[0]), data[1]);              //, Integer.parseInt(data[2]), data[3], Integer.parseInt(data[4]));
+                            myDB.insertData(Integer.parseInt(data[0]), data[1],data[2],data[3],data[4],data[5]);              //, Integer.parseInt(data[2]), data[3], Integer.parseInt(data[4]));
                             //myDB.insertDat;
                         }
                     })

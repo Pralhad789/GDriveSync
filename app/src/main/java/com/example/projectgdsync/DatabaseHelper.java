@@ -12,6 +12,10 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public static final String TABLE_NAME = "firsttable";
     public static final String COL_1 = "ID";
     public static final String COL_2 ="Name";
+    public static final String COL_3 ="Product";
+    public static final String COL_4 ="Quantity";
+    public static final String COL_5 ="Price";
+    public static final String COL_6 ="Date";
 
     SQLiteDatabase db;
 
@@ -32,14 +36,14 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 2);
         db = this.getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         //db.execSQL("drop table if exists "+TABLE_NAME);
-        db.execSQL("create table " +TABLE_NAME+ "(ID INTEGER PRIMARY KEY," +"Name VARCHAR(20))");
+        db.execSQL("create table " +TABLE_NAME+ "(ID INTEGER PRIMARY KEY,Name VARCHAR(20),Product Varchar(200),Quantity Integer, Price Integer, Date TIMESTAMP default CURRENT_TIMESTAMP)");
 
 //                "Price INTEGER," +
 //                "updationDate Date," +
@@ -57,16 +61,17 @@ public class DatabaseHelper extends SQLiteOpenHelper
         onCreate(db);
     }
 
-    public boolean insertData(int ID, String name)//, int price, String date, int value)
+    public boolean insertData(int ID, String name,String product, String quantity, String price, String date)//, int price, String date, int value)
     {
         db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1,ID);
         contentValues.put(COL_2,name);
-       // contentValues.put(COL_1,Product);
-       // contentValues.put(COL_2,Quantity);
-       // contentValues.put(COL_4,Price);
+        contentValues.put(COL_3,product);
+        contentValues.put(COL_4,quantity);
+        contentValues.put(COL_5,price);
+        contentValues.put(COL_6,date);
 
         long result = db.insert(TABLE_NAME,null,contentValues);
         if (result==-1)
@@ -86,14 +91,18 @@ public class DatabaseHelper extends SQLiteOpenHelper
 //        return res;
 //    }
 
-    public boolean updateData(int ID,String name)
+    public boolean updateData(int ID,String name,String product, String quantity, String price, String date)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1,ID);
         contentValues.put(COL_2,name);
+        contentValues.put(COL_3,product);
+        contentValues.put(COL_4,quantity);
+        contentValues.put(COL_5,price);
+        contentValues.put(COL_6,date);
         //db.update(TABLE_NAME,contentValues,"ID = ?", new int[] { Integer.parseInt(ID)  });
-        db.execSQL(" UPDATE " + TABLE_NAME + " SET name = ' " +name+ "' where ID =" +ID+ ";" );
+        db.execSQL(" UPDATE " + TABLE_NAME + " SET name = '" +name+ "',product = '"+product+"',quantity = '"+quantity+"',price = '"+price+"',date = '"+date+"'  where ID =" +ID+ ";" );
         return  true;
 
     }
