@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "926180309587",
+    "firebase_url": "https://projectgdsync-277709.firebaseio.com",
+    "project_id": "projectgdsync-277709",
+    "storage_bucket": "projectgdsync-277709.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926180309587:android:3a20650a9a5d858dc4e4a6",
+        "android_client_info": {
+          "package_name": "com.example.projectgdsync"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926180309587-p55ppgudjavd3o6idoicleng66k2mscf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.projectgdsync",
+            "certificate_hash": "18bdc37346e6103bbd72307af6460e6f4ebe3e17"
+          }
+        },
+        {
+          "client_id": "926180309587-9dapchq9f746hfev17lsur80999sr420.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnJSVAX74uxzNU8DsQjv4W03IBTA0q8u4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926180309587-9dapchq9f746hfev17lsur80999sr420.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

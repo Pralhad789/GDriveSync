@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     Button loginButton, registerButton;
     EditText username, password, confirmPassword;
+    TextView forgotPassword;
     TextInputLayout passwordTextInput,confirmPasswordTextInput, usernameTextInput;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +38,19 @@ public class LoginActivity extends AppCompatActivity {
         passwordTextInput = findViewById(R.id.password_text_input);
         confirmPasswordTextInput = findViewById(R.id.confirm_password_text_input);
         username = findViewById(R.id.username_edit_text);
+        forgotPassword = findViewById(R.id.forgot_password);
         usernameTextInput = findViewById(R.id.username_text_input);
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,LoginRegistrationActivity.class);
-                startActivity(intent);
-                finish();
-            }
+
+        forgotPassword.setOnClickListener(v->{
+            Intent intent = new Intent(LoginActivity.this,ForgotPasswordActivity.class);
+            startActivity(intent);
+            finish();
+        });
+        registerButton.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this,LoginRegistrationActivity.class);
+            startActivity(intent);
+            finish();
         });
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
