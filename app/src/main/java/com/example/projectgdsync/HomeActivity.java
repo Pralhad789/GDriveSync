@@ -27,6 +27,7 @@ import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccoun
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -380,6 +381,7 @@ public class HomeActivity extends AppCompatActivity {
             Cursor cursor = myDB.getListContents();
             String fileContent = ";";
             //StringBuilder fc = new StringBuilder();
+
             while (cursor.moveToNext()) {
                 fileContent += cursor.getString(0) + "," + cursor.getString(1) + "," + cursor.getString(2) + "," + cursor.getString(3) + "," + cursor.getString(4) + "," + cursor.getString(5) + ";\n";  //+","+cursor.getString(2)+","+cursor.getString(3)+","+cursor.getString(4)+"\n";
                 //fc.append(cursor.getString(0)).append(cursor.getString(1));
@@ -430,15 +432,38 @@ public class HomeActivity extends AppCompatActivity {
         PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(300, 600, 1).create();
         PdfDocument.Page page = pdfDocument.startPage(pageInfo);
 
-
-        for (int i = 0; i <= 5; i++) {
-
-            page.getCanvas().drawText(cursor.getString(i), 10, 25 * i, new Paint());
-
-        }
-        pdfDocument.finishPage(page);
         String filePath = Environment.getExternalStorageDirectory().getPath() + "/Download/" + editid.getText().toString() + ".pdf";
         File file = new File(filePath);
+        page.getCanvas().drawText("Report: ",0,0,new Paint());
+        if (cursor.moveToFirst()) {
+            int i=1;
+            do {
+                page.getCanvas().drawText("ID: ",0,5*i+5,new Paint());
+                page.getCanvas().drawText(cursor.getString(0), 20, 5*i+5, new Paint());
+
+                page.getCanvas().drawText("Name: ",0,5*i+10,new Paint());
+                page.getCanvas().drawText(cursor.getString(1), 20, 5*i+10, new Paint());
+
+                page.getCanvas().drawText("Product: ",0,5*i+15,new Paint());
+                page.getCanvas().drawText(cursor.getString(0), 20, 5*i+15, new Paint());
+
+                page.getCanvas().drawText("Quantity: ",0,5*i+20,new Paint());
+                page.getCanvas().drawText(cursor.getString(0), 20, 5*i+20, new Paint());
+
+                page.getCanvas().drawText("Price: ",0,5*i+25,new Paint());
+                page.getCanvas().drawText(cursor.getString(0), 20, 5*i+25, new Paint());
+
+                page.getCanvas().drawText("Date: ",0,5*i+30,new Paint());
+                page.getCanvas().drawText(cursor.getString(0), 20, 5*i+30, new Paint());
+
+                page.getCanvas().drawText("---------------------------------------------------",0,5*i+35,new Paint());
+
+                i++;
+
+            } while (cursor.moveToNext());
+        }
+
+        pdfDocument.finishPage(page);
         try {
             pdfDocument.writeTo(new FileOutputStream(file));
         } catch (IOException e) {

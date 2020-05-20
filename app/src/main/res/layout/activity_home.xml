@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/gradient"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
         android:background="#fff"
         android:elevation="5dp"
         app:cardCornerRadius="10dp">
@@ -21,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="25dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -31,7 +29,11 @@
                 android:text="Fill in the details:"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/dividerColor"/>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -124,6 +126,12 @@
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/dividerColor"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -189,7 +197,7 @@
                     android:id="@+id/btn_pdf"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="PDF" />
+                    android:text="Export PDF" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -200,4 +208,4 @@
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
-</LinearLayout>
+</ScrollView>
