@@ -87,12 +87,13 @@
 
                 <TextView
                     android:id="@+id/Quantity"
-                    android:layout_width="wrap_content"
+                    android:layout_width="200px"
                     android:layout_height="match_parent"
-                    android:layout_marginEnd="253dp"
-                    android:layout_toEndOf="@+id/colon"
-                    android:text="Quantity"
+                    android:layout_alignStart="@+id/colon"
+                    android:layout_marginStart="41dp"
                     android:layout_marginLeft="12sp"
+                    android:layout_marginEnd="253dp"
+                    android:text="Quantity"
                     android:textColor="#eee"
                     android:textSize="15sp" />
                 <TextView

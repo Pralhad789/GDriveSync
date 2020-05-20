@@ -9,9 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-/**
- * Created by Mitch on 2016-05-13.
- */
+
 public class ViewListContents extends AppCompatActivity {
 
     DatabaseHelper myDB;
@@ -36,7 +34,7 @@ public class ViewListContents extends AppCompatActivity {
             {
             int i=0;
             while(data.moveToNext()){
-                user = new User(data.getString(0),data.getString(1));
+                user = new User(data.getString(0),data.getString(1),data.getString(2),data.getString(3),data.getString(4),data.getString(5));
                 theList.add(i,user);
 //                System.out.println(data.getString(0)+" "+data.getString(1)+" ");
 //                System.out.println(theList.get(i).toString());

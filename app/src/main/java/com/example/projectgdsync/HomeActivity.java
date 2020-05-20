@@ -27,7 +27,6 @@ import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccoun
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
-import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -69,26 +68,17 @@ public class HomeActivity extends AppCompatActivity {
         editproduct = findViewById(R.id.edit_product);
         editdate = findViewById(R.id.edit_date);
         editdate = findViewById(R.id.edit_date);
+
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
         String currentDateandTime = sdf.format(new Date());
         //editdate.setText(currentDateandTime);
 
         textViewDisplay = findViewById(R.id.textView);
 
-//        editprice = findViewById(R.id.edit_price);
-//        editValue = findViewById(R.id.edit_value);
-        // Store the EditText boxes to be updated when files are opened/created/modified.
-        // Set the onClick listeners for the button bar.
-//        findViewById(R.id.open_btn).setOnClickListener(view -> openFilePicker());
+
         btnopen = findViewById(R.id.open_btn);
         btnopen.setOnClickListener(view -> openFilePicker());
-//        findViewById(R.id.save_btn).setOnClickListener(view -> {
-//            try {
-//                exportData();
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        });
+
         btnexport = findViewById(R.id.save_btn);
         btnexport.setOnClickListener(view -> {
             try {
@@ -141,23 +131,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        btndisplay.setOnClickListener(v -> {
-//            Cursor res = myDB.getAllData();
-//
-//            if (res.getCount() == 0) {
-//                //Show message
-//                showMessage("Error", "Nothing found");
-//                return;
-//            }
-//
-//            StringBuffer buffer = new StringBuffer();
-//            while (res.moveToNext()) {
-//                buffer.append(res.getString(0) + "\n" + res.getString(1) + "\n" + res.getString(2) + "\n" + res.getString(3) + "\n" + res.getString(4) + "\n");
-//            }
-//
-//            showMessage("Data", buffer.toString());
-//
-//        });
+
 
         btn_delete = findViewById(R.id.btn_delete);
         btn_delete.setOnClickListener(new View.OnClickListener() {
@@ -292,8 +266,7 @@ public class HomeActivity extends AppCompatActivity {
                                     .setApplicationName("Drive API Migration")
                                     .build();
 
-                    // The DriveServiceHelper encapsulates all REST API and SAF functionality.
-                    // Its instantiation is required before handling any onClick actions.
+
                     mDriveServiceHelper = new DriveServiceHelper(googleDriveService);
                 })
                 .addOnFailureListener(exception -> Log.e(TAG, "Unable to sign in.", exception));
@@ -327,6 +300,7 @@ public class HomeActivity extends AppCompatActivity {
                             myDB.insertData(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5]);              //, Integer.parseInt(data[2]), data[3], Integer.parseInt(data[4]));
                             //myDB.insertDat;
                         }
+                        Toast.makeText(HomeActivity.this, "Imported from Google Drive", Toast.LENGTH_LONG).show();
                     })
                     .addOnFailureListener(exception ->
                             Log.e(TAG, "Unable to open file from picker.", exception));
@@ -398,20 +372,12 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * Queries the Drive REST API for files visible to this app and lists them in the content view.
-     */
 
-    /**
-     * Updates the UI to read-only mode.
-     */
     private void setReadOnlyMode() {
         mOpenFileId = null;
     }
 
-    /**
-     * Updates the UI to read/write mode on the document identified by {@code fileId}.
-     */
+
     private void setReadWriteMode(String fileId) {
         mOpenFileId = fileId;
     }
@@ -421,10 +387,11 @@ public class HomeActivity extends AppCompatActivity {
         Cursor cursor = myDB.db.rawQuery(query, null);
         try {
             cursor.moveToFirst();
-            textViewDisplay.setText(cursor.getString(0));
+            //textViewDisplay.setText(cursor.getString(0));
+            Toast.makeText(HomeActivity.this, "PDF created", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             e.printStackTrace();
-            textViewDisplay.setText("");
+            //textViewDisplay.setText("");
             return;
         }
 
@@ -434,29 +401,29 @@ public class HomeActivity extends AppCompatActivity {
 
         String filePath = Environment.getExternalStorageDirectory().getPath() + "/Download/" + editid.getText().toString() + ".pdf";
         File file = new File(filePath);
-        page.getCanvas().drawText("Report: ",0,0,new Paint());
+        page.getCanvas().drawText("Report: ",0,20,new Paint());
         if (cursor.moveToFirst()) {
             int i=1;
             do {
-                page.getCanvas().drawText("ID: ",0,5*i+5,new Paint());
-                page.getCanvas().drawText(cursor.getString(0), 20, 5*i+5, new Paint());
+                page.getCanvas().drawText("ID: ",0,25*i+25,new Paint());
+                page.getCanvas().drawText(cursor.getString(0), 55, 25*i+25, new Paint());
 
-                page.getCanvas().drawText("Name: ",0,5*i+10,new Paint());
-                page.getCanvas().drawText(cursor.getString(1), 20, 5*i+10, new Paint());
+                page.getCanvas().drawText("Name: ",0,25*i+45,new Paint());
+                page.getCanvas().drawText(cursor.getString(1), 55, 25*i+45, new Paint());
 
-                page.getCanvas().drawText("Product: ",0,5*i+15,new Paint());
-                page.getCanvas().drawText(cursor.getString(0), 20, 5*i+15, new Paint());
+                page.getCanvas().drawText("Product: ",0,25*i+65,new Paint());
+                page.getCanvas().drawText(cursor.getString(2), 55, 25*i+65, new Paint());
 
-                page.getCanvas().drawText("Quantity: ",0,5*i+20,new Paint());
-                page.getCanvas().drawText(cursor.getString(0), 20, 5*i+20, new Paint());
+                page.getCanvas().drawText("Quantity: ",0,25*i+85,new Paint());
+                page.getCanvas().drawText(cursor.getString(3), 55, 25*i+85, new Paint());
 
-                page.getCanvas().drawText("Price: ",0,5*i+25,new Paint());
-                page.getCanvas().drawText(cursor.getString(0), 20, 5*i+25, new Paint());
+                page.getCanvas().drawText("Price: ",0,25*i+105,new Paint());
+                page.getCanvas().drawText(cursor.getString(4), 55, 25*i+105, new Paint());
 
-                page.getCanvas().drawText("Date: ",0,5*i+30,new Paint());
-                page.getCanvas().drawText(cursor.getString(0), 20, 5*i+30, new Paint());
+                page.getCanvas().drawText("Date: ",0,25*i+125,new Paint());
+                page.getCanvas().drawText(cursor.getString(5), 55, 25*i+125, new Paint());
 
-                page.getCanvas().drawText("---------------------------------------------------",0,5*i+35,new Paint());
+                page.getCanvas().drawText("---------------------------------------------------",0,25*i+145,new Paint());
 
                 i++;
 
