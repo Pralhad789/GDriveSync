@@ -3,6 +3,8 @@ package com.example.projectgdsync;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Paint;
+import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -10,11 +12,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-//ok
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -25,6 +28,9 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
@@ -36,6 +42,8 @@ import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
+//ok
+
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -45,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
     private DriveServiceHelper mDriveServiceHelper;
     private String mOpenFileId;
     private EditText editid, editprice, editname, editdate, editValue,editqty,editproduct;
-    private Button btnupdate, btnadddata, btndisplay, btn_delete,btnexport,btnopen;
+    private Button btnupdate, btnadddata, btndisplay, btn_delete,btnexport,btnopen,btnpdf;
+    private TextView textViewDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         String currentDateandTime = sdf.format(new Date());
         //editdate.setText(currentDateandTime);
 
+        textViewDisplay = findViewById(R.id.textView);
 
 //        editprice = findViewById(R.id.edit_price);
 //        editValue = findViewById(R.id.edit_value);
@@ -160,6 +170,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+
+        btnpdf = findViewById(R.id.btn_pdf);
+        btnpdf.setOnClickListener(view ->{
+
+            CreatePDF();
+
+        });
 
     }
 
@@ -395,5 +412,38 @@ public class MainActivity extends AppCompatActivity {
      */
     private void setReadWriteMode(String fileId) {
         mOpenFileId = fileId;
+    }
+
+    public  void CreatePDF(){
+        String query = "Select * from firsttable where ID=" + editid.getText().toString();
+        Cursor cursor = myDB.db.rawQuery(query,null);
+        try {
+            cursor.moveToFirst();
+            textViewDisplay.setText(cursor.getString(0));
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            textViewDisplay.setText("");
+            return;
+        }
+
+        PdfDocument pdfDocument = new PdfDocument();
+        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(300, 600,1).create();
+        PdfDocument.Page page = pdfDocument.startPage(pageInfo);
+        for(int i=0;i<=5;i++)
+        {
+
+            page.getCanvas().drawText(cursor.getString(i),10, 25*i, new Paint());
+
+        }
+        pdfDocument.finishPage(page);
+        String filePath = Environment.getExternalStorageDirectory().getPath()+"/Download/"+editid.getText().toString()+".pdf";
+        File file = new File(filePath);
+        try {
+            pdfDocument.writeTo(new FileOutputStream(file));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        pdfDocument.close();
     }
 }
