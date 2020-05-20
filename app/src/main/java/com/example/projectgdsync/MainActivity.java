@@ -25,7 +25,9 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
 
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Locale;
 
 import jxl.Workbook;
@@ -56,10 +58,10 @@ public class MainActivity extends AppCompatActivity {
         editqty = findViewById(R.id.edit_quantity);
         editproduct = findViewById(R.id.edit_product);
         editdate = findViewById(R.id.edit_date);
-//        editdate = findViewById(R.id.edit_date);
-        //SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-        //String currentDateandTime = sdf.format(new Date());
-
+        editdate = findViewById(R.id.edit_date);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+        String currentDateandTime = sdf.format(new Date());
+        //editdate.setText(currentDateandTime);
 
 
 //        editprice = findViewById(R.id.edit_price);
@@ -304,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
                         for (int i = 1; i < content.length; i++) {
                             String[] data = content[i].split(",");
                             //Log.i(TAG, "DATA FROM GOOGLE DRIVE: " + content.clone());
-                            myDB.insertData(Integer.parseInt(data[0]), data[1],data[2],data[3],data[4],data[5]);              //, Integer.parseInt(data[2]), data[3], Integer.parseInt(data[4]));
+                            myDB.insertData(Integer.parseInt(data[0]),data[1],data[2],data[3],data[4],data[5]);              //, Integer.parseInt(data[2]), data[3], Integer.parseInt(data[4]));
                             //myDB.insertDat;
                         }
                     })
@@ -362,7 +364,7 @@ public class MainActivity extends AppCompatActivity {
             String fileContent = ";";
             //StringBuilder fc = new StringBuilder();
             while(cursor.moveToNext()){
-                fileContent += cursor.getString(0)+","+cursor.getString(1)+";\n";  //+","+cursor.getString(2)+","+cursor.getString(3)+","+cursor.getString(4)+"\n";
+                fileContent += cursor.getString(0)+","+cursor.getString(1)+","+cursor.getString(2)+","+cursor.getString(3)+","+cursor.getString(4)+","+cursor.getString(5)+";\n";  //+","+cursor.getString(2)+","+cursor.getString(3)+","+cursor.getString(4)+"\n";
                 //fc.append(cursor.getString(0)).append(cursor.getString(1));
             }
             //String fileContent = fc.toString();

@@ -36,7 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 2);
+        super(context, DATABASE_NAME, null, 5);
         db = this.getWritableDatabase();
     }
 
@@ -49,7 +49,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 //                "updationDate Date," +
 //                "value INTEGER)");
 
-        //db.execSQL("create table " +TABLE_NAME+ "(ID INTEGER PRIMARY KEY,Name VARCHAR(50),Quantity INTEGER,Price INTEGER,OrderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP );");
+        //db.execSQL("create table " +TABLE_NAME+ "(ID INTEGER PRIMARY KEY,Name VARCHAR(50),Quantity INTEGER,Price INTEGER,OrderDate DATE );");
 
 
     }
@@ -61,7 +61,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
         onCreate(db);
     }
 
-    public boolean insertData(int ID, String name,String product, String quantity, String price, String date)//, int price, String date, int value)
+    public boolean insertData(int ID, String name,String product, String quantity, String price, String Date)//, int price, String date, int value)
     {
         db = this.getWritableDatabase();
 
@@ -71,7 +71,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
         contentValues.put(COL_3,product);
         contentValues.put(COL_4,quantity);
         contentValues.put(COL_5,price);
-        contentValues.put(COL_6,date);
+        contentValues.put(COL_6,Date);
 
         long result = db.insert(TABLE_NAME,null,contentValues);
         if (result==-1)
