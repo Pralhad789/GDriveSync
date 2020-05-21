@@ -404,7 +404,7 @@ public class HomeActivity extends AppCompatActivity {
         PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(300, 600, 1).create();
         PdfDocument.Page page = pdfDocument.startPage(pageInfo);
 
-        String filePath = Environment.getExternalStorageDirectory().getPath() + "/Download/" + editid.getText().toString() + ".pdf";
+        String filePath = Environment.getExternalStorageDirectory().getPath() + "/Download/Report.pdf";
         File file = new File(filePath);
         page.getCanvas().drawText("Report: ",0,20,new Paint());
         if (cursor.moveToFirst()) {
