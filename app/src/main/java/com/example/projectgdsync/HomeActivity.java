@@ -27,6 +27,7 @@ import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccoun
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -53,7 +54,7 @@ public class HomeActivity extends AppCompatActivity {
     private DriveServiceHelper mDriveServiceHelper;
     private String mOpenFileId;
     private EditText editid, editprice, editname, editdate, editValue, editqty, editproduct;
-    private Button btnupdate, btnadddata, btndisplay, btn_delete, btnexport, btnopen, btnpdf;
+    private Button btnupdate, btnadddata, btndisplay, btn_delete, btnexport, btnopen, btnpdf, btnLogout;
     private TextView textViewDisplay;
 
     @Override
@@ -68,14 +69,18 @@ public class HomeActivity extends AppCompatActivity {
         editproduct = findViewById(R.id.edit_product);
         editdate = findViewById(R.id.edit_date);
         editdate = findViewById(R.id.edit_date);
-
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
         String currentDateandTime = sdf.format(new Date());
         //editdate.setText(currentDateandTime);
 
-        textViewDisplay = findViewById(R.id.textView);
 
-
+        btnLogout = findViewById(R.id.btn_logout);
+        btnLogout.setOnClickListener(v->{
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
+            startActivity(intent);
+            finish();
+        });
         btnopen = findViewById(R.id.open_btn);
         btnopen.setOnClickListener(view -> openFilePicker());
 
