@@ -407,7 +407,7 @@ public class HomeActivity extends AppCompatActivity {
         File file = new File(filePath);
         page.getCanvas().drawText("Report: ",0,20,new Paint());
         if (cursor.moveToFirst()) {
-            int i=1,pg = 1;
+            int i=1,pg = 1,count=1;
             do {
                 page.getCanvas().drawText("ID: ",0,25*i+25,new Paint());
                 page.getCanvas().drawText(cursor.getString(0), 55, 25*i+25, new Paint());
@@ -431,9 +431,10 @@ public class HomeActivity extends AppCompatActivity {
 
                 i+=7;
                 pg++;
+                count++;
                 if(pg%3==0){
                     pdfDocument.finishPage(page);
-                    pageInfo = new PdfDocument.PageInfo.Builder(300, 600, 2).create();
+                    pageInfo = new PdfDocument.PageInfo.Builder(300, 600, count++).create();
                     page = pdfDocument.startPage(pageInfo);
 
                 }
