@@ -388,7 +388,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void CreatePDF() {
-        String query = "Select * from firsttable where ID=" + editid.getText().toString();
+        String query = "Select * from firsttable";
         Cursor cursor = myDB.db.rawQuery(query, null);
         try {
             cursor.moveToFirst();
