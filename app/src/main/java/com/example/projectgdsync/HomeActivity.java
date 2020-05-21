@@ -430,7 +430,8 @@ public class HomeActivity extends AppCompatActivity {
 
                 page.getCanvas().drawText("---------------------------------------------------",0,25*i+145,new Paint());
 
-                i++;
+                i+=7;
+
 
             } while (cursor.moveToNext());
         }
