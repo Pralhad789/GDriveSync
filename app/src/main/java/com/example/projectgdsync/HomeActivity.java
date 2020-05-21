@@ -434,7 +434,7 @@ public class HomeActivity extends AppCompatActivity {
                 count++;
                 if(pg%3==0){
                     pdfDocument.finishPage(page);
-                    pageInfo = new PdfDocument.PageInfo.Builder(300, 600, count++).create();
+                    pageInfo = new PdfDocument.PageInfo.Builder(300, 600, count).create();
                     page = pdfDocument.startPage(pageInfo);
 
                 }
