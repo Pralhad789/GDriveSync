@@ -19,14 +19,17 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".LoginRegistrationActivity" />
         <activity android:name=".HomeActivity" />
+        <activity android:name=".ViewListContents" />
+        <activity android:name=".SelectChoice"/>
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ViewListContents" />
+
     </application>
 
 </manifest>

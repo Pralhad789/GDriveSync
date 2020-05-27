@@ -23,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent i = new Intent(MainActivity.this,
-                        LoginRegistrationActivity.class);  //Intent is used to switch from one activity to another.
+               // Intent i = new Intent(MainActivity.this,LoginRegistrationActivity.class);  //Intent is used to switch from one activity to another.
+
+                Intent i = new Intent(MainActivity.this,SelectChoice.class);
 
                 startActivity(i);        //Invoke the LoginRegistrationActivity.
 
