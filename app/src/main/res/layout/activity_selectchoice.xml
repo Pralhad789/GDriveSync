@@ -54,4 +54,10 @@
         android:layout_height="wrap_content"
         android:text="Login" />
 
+    <Button
+        android:id="@+id/btn_display"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Display" />
+
 </LinearLayout>

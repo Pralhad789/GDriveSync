@@ -1,7 +1,9 @@
 package com.example.projectgdsync;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,7 +35,7 @@ public class SelectChoice extends AppCompatActivity {
     NewDatabaseHelper myDB;
     DriveServiceHelper mDriveServiceHelper;
 
-    private Button btn_existingID,btn_demo ,btn_login;
+    private Button btn_existingID,btn_demo ,btn_login,btn_display;
     private EditText edit_productname, edit_year, edit_username, edit_password;
 
     @Override
@@ -45,6 +47,7 @@ public class SelectChoice extends AppCompatActivity {
         btn_existingID = findViewById(R.id.existingid);
         btn_demo = findViewById(R.id.demo);
         btn_login = findViewById(R.id.btn_Login);
+        btn_display = findViewById(R.id.btn_display);
 
         edit_productname = findViewById(R.id.edit_productname);
         edit_year = findViewById(R.id.edit_year);
@@ -62,6 +65,7 @@ public class SelectChoice extends AppCompatActivity {
                 // TODO Auto-generated method stub
 
                 //getting Edit Text values and stores it into string
+
                 String username = edit_username.getText().toString();
                 //String password = etpassword.getText().toString();
 
@@ -86,8 +90,45 @@ public class SelectChoice extends AppCompatActivity {
 
         });
 
+       // public void viewAll() {
+            btn_display.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Cursor res = myDB.getAllData();
+                            if(res.getCount() == 0) {
+                                // show message
+                                showMessage("Error","Nothing found");
+                                return;
+                            }
+
+                            StringBuffer buffer = new StringBuffer();
+                            while (res.moveToNext()) {
+                                buffer.append("Id :"+ res.getString(0)+"\n");
+                                buffer.append("Name :"+ res.getString(1)+"\n");
+                                //buffer.append("Surname :"+ res.getString(2)+"\n");
+                                //buffer.append("Marks :"+ res.getString(3)+"\n\n");
+                            }
+
+                            // Show all data
+                            showMessage("Data",buffer.toString());
+                        }
+                    }
+            );
+        //}
+
+
 
     }
+
+    public void showMessage(String title,String Message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(Message);
+        builder.show();
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
         switch (requestCode) {
