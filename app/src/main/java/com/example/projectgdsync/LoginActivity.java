@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(LoginActivity.this, "Not sucessfull", Toast.LENGTH_SHORT).show();firebaseAuth = FirebaseAuth.getInstance();
                             } else {
-                                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                startActivity(new Intent(LoginActivity.this, Menu.class));
                             }
                         }
                     });

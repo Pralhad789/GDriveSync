@@ -15,21 +15,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ForgotPasswordActivity"></activity>
+        <activity android:name=".ReportsPage"></activity>
+        <activity android:name=".StocksPage" />
+        <activity android:name=".SalesPage" />
+        <activity android:name=".CustomersPage" />
+        <activity android:name=".ItemsPage" />
+        <activity android:name=".Menu" />
+        <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".LoginRegistrationActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".ViewListContents" />
-        <activity android:name=".SelectChoice"/>
+        <activity android:name=".SelectChoice" />
         <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

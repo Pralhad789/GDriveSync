@@ -39,7 +39,7 @@ public class LoginRegistrationActivity extends AppCompatActivity {
             FirebaseUser user = firebaseAuth.getCurrentUser();
             if (user != null) {
                 Toast.makeText(LoginRegistrationActivity.this, "User logged in ", Toast.LENGTH_SHORT).show();
-                Intent I = new Intent(LoginRegistrationActivity.this, HomeActivity.class);
+                Intent I = new Intent(LoginRegistrationActivity.this, Menu.class);
                 startActivity(I);
             } else {
                 Toast.makeText(LoginRegistrationActivity.this, "Login to continue", Toast.LENGTH_SHORT).show();
@@ -57,7 +57,7 @@ public class LoginRegistrationActivity extends AppCompatActivity {
                     auth.createUserWithEmailAndPassword(username.getText().toString(), password.getText().toString()).addOnCompleteListener(LoginRegistrationActivity.this, task -> {
                         if (task.isSuccessful()) {
                             Toast.makeText(LoginRegistrationActivity.this, "Success", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(LoginRegistrationActivity.this, HomeActivity.class);
+                            Intent intent = new Intent(LoginRegistrationActivity.this, Menu.class);
                             startActivity(intent);
                             finish();
                         } else {
