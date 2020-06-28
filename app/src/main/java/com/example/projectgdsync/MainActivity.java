@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
                // Intent i = new Intent(MainActivity.this,LoginRegistrationActivity.class);  //Intent is used to switch from one activity to another.
 
-                Intent i = new Intent(MainActivity.this,SelectChoice.class);
+                Intent i = new Intent(MainActivity.this,LoginActivity.class);
 
                 startActivity(i);        //Invoke the LoginRegistrationActivity.
 
