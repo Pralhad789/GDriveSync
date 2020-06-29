@@ -125,36 +125,31 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/login_button"
+                android:id="@+id/register_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:text="Log In" />
-
+                android:text="Register" />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/transaction_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="10dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="103dp"
-                android:layout_marginRight="103dp"
+                android:layout_toStartOf="@id/register_button"
+                android:layout_toLeftOf="@id/register_button"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
                 android:text="Transaction" />
-
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/register_button"
+                android:id="@+id/login_button"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="66dp"
-                android:layout_marginEnd="121dp"
-                android:layout_marginRight="121dp"
-                android:layout_toStartOf="@id/login_button"
-                android:layout_toLeftOf="@id/login_button"
-                android:text="Register" />
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_toStartOf="@id/transaction_button"
+                android:layout_toLeftOf="@id/transaction_button"
+                android:text="Log in" />
 
         </RelativeLayout>
         <RelativeLayout
