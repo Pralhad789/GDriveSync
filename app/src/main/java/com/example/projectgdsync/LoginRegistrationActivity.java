@@ -65,6 +65,19 @@ public class LoginRegistrationActivity extends AppCompatActivity {
                         }
                     });
                 }
+
+//                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                    FirebaseUser user = firebaseAuth.getCurrentUser();
+//                    if (user != null) {
+//                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+//                        Map<String, String> map = new HashMap<>();
+//                        map.put("provider", user.getProviders().get(0));
+//                        if(user.getProviderData().containsKey("displayName")) {
+//                            map.put("displayName", user.getProviderData().get("displayName").toString());
+//                        }
+//                        ref.child("users").child(user.getUid()).setValue(map);
+//                    }
+//                }
             }
 
             private boolean validate(String u, String p, String cp) {

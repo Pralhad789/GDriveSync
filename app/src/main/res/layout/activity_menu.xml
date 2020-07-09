@@ -24,7 +24,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:gravity="center"
+            >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,11 +35,12 @@
             android:textSize="25dp"/>
 
             <Button
+                android:id="@+id/btn_master"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:id="@+id/btn_master"
+                android:background="@drawable/round_button"
                 android:text="Master" />
 
             <LinearLayout
@@ -46,18 +49,21 @@
                 android:orientation="vertical"
                 android:padding="10dp"
                 android:id="@+id/view_master"
+                android:gravity="center"
                 android:visibility="gone">
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/btn_items"
+                    android:background="@drawable/round_button"
                     android:text="Items" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/btn_customer"
+                    android:background="@drawable/round_button"
                     android:text="Customer" />
             </LinearLayout>
 
@@ -66,6 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:background="@drawable/round_button"
                 android:id="@+id/btn_transactions"
                 android:text="Transaction" />
 
@@ -81,12 +88,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/btn_sale"
+                    android:background="@drawable/round_button"
                     android:text="Sale" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/btn_stock"
+                    android:background="@drawable/round_button"
                     android:text="Stock" />
             </LinearLayout>
 
@@ -96,6 +105,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:id="@+id/btn_report"
+                android:background="@drawable/round_button"
                 android:text="Report" />
 
         </LinearLayout>

@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:hint="Quantity">
+                android:hint="Supplier Code">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_quantity"
@@ -56,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:hint="Item">
+                android:hint="Supplier name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_item"
@@ -71,7 +71,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:hint="Rate">
+                android:hint="Supplier address">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_rate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:hint="Supplier Balance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_rate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:hint="Bill Amount">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_rate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:hint="Paid Amount">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_rate"
